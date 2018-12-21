@@ -1,4 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
+dataset
 *.tar
 image.*
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
@@ -33,6 +33,8 @@ image.*
 # auto-import.
 .idea/modules.xml
 .idea/*.iml
+.idea/vcs.xml
+.idea
 .idea/modules
 
 # CMake
@@ -67,3 +69,4 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
+dataset/

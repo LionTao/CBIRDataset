@@ -69,7 +69,7 @@ function main
     Write-Host "Extracting" -ForegroundColor Red
     cmd /c $7zdes x ./*.tar
 
-    Write-Host "\n\nDone" -ForegroundColor Red
+    Write-Host "Done" -ForegroundColor Red
 }
 
 main

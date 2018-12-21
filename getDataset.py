@@ -1,7 +1,11 @@
+import requests
+from contextlib import closing
+import os
+import zipfile
+import tempfile
+
 
 def DownloadFile(file_url, file_path):
-    import requests
-    from contextlib import closing
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"}
     with closing(requests.get(file_url, headers=headers, stream=True)) as response:
@@ -13,20 +17,19 @@ def DownloadFile(file_url, file_path):
                 file.write(data)
                 data_count = data_count + len(data)
                 now_jd = (data_count / content_size) * 100
-                print("\r Progress：{:.2f}%({:d}/{:d}) - {}" .format (now_jd, data_count, content_size, file_path), end=" ")
-        print("\nDownload Completed")
+                print("\r Progress：{:.2f}%({:d}/{:d}) - {}".format(now_jd, data_count, content_size, file_path),
+                      end=" ")
+        print("\nDownload Completed.")
 
 
 def ExtractZip(path, des=""):
-    import os
-    import zipfile
-    print("Checking Dataset directory")
+    print("Checking Dataset directory...")
     if not os.path.exists("dataset"):
-        print("Directory not found")
+        print("Directory not found.")
         os.mkdir("dataset")
-        print("Directory successfully created")
+        print("Directory successfully created.")
 
-    print("\nStart unzip....This may take a while")
+    print("\nStart unzip....This may take a while...")
     file_zip = zipfile.ZipFile(path, 'r')
     for file in file_zip.namelist():
         file_zip.extract(file, des + 'dataset/')
@@ -35,13 +38,12 @@ def ExtractZip(path, des=""):
 
 
 def GetDataSet():
-    import tempfile
     cdn_url = "http://media.liontao.xin/CorelDB.zip?token=8D-fPY7fZfvNQ_YlcCHphmf-beQ7s5-ahx1C_WJ4:B4fco3kqXcyC3Ast57tWaAxHCj4"
 
     _, file_path = tempfile.mkstemp(suffix=".zip", prefix="SimpleCBIR_")
     DownloadFile(cdn_url, file_path)
     ExtractZip(file_path)
-    print("Dataset is ready")
+    print("Dataset is ready.")
 
 
 if __name__ == '__main__':

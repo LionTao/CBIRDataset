@@ -17,7 +17,7 @@ def DownloadFile(file_url, file_path):
                 file.write(data)
                 data_count = data_count + len(data)
                 now_jd = (data_count / content_size) * 100
-                print("\r Progress：{:.2f}%({:d}/{:d}) - {}".format(now_jd, data_count, content_size, file_path),
+                print("\r Progress: {:.2f}% ({:d}/{:d}) - {}".format(now_jd, data_count, content_size, file_path),
                       end=" ")
         print("\nDownload Completed.")
 
@@ -33,7 +33,8 @@ def ExtractZip(path, des=""):
     file_zip = zipfile.ZipFile(path, 'r')
     for file in file_zip.namelist():
         file_zip.extract(file, des + 'dataset/')
-        print("\r Progress:{:.2f}%".format((file_zip.namelist().index(file) / len(file_zip.namelist())) * 100), end='')
+        print("\r Progress: {:.2f}%".format((file_zip.namelist().index(file) / len(file_zip.namelist())) * 100), end='')
+    print("\r Progress: 100.00%")
     file_zip.close()
 
 

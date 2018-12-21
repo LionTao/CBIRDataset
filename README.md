@@ -16,6 +16,7 @@ Thanks to [Qiniu](https://www.qiniu.com/) for free CDN service
 Run python script `getDataset.py` will download labeled Corel10k Dataset to system temp folder from Qiniu CDN.    
 Then the script will extract it to current directory using Python `zipfile` module. 
 ```bash
+pip install requests # install dependency
 python getDataset.py
 ```
 

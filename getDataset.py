@@ -1,11 +1,6 @@
-import requests
-from contextlib import closing
-import os
-import zipfile
-import tempfile
-
-
 def DownloadFile(file_url, file_path):
+    import requests
+    from contextlib import closing
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36"}
     with closing(requests.get(file_url, headers=headers, stream=True)) as response:
@@ -23,6 +18,8 @@ def DownloadFile(file_url, file_path):
 
 
 def ExtractZip(path, des=""):
+    import os
+    import zipfile
     print("Checking Dataset directory...")
     if not os.path.exists("dataset"):
         print("Directory not found.")
@@ -39,6 +36,7 @@ def ExtractZip(path, des=""):
 
 
 def GetDataSet():
+    import tempfile
     cdn_url = "http://media.liontao.xin/CorelDB.zip?token=8D-fPY7fZfvNQ_YlcCHphmf-beQ7s5-ahx1C_WJ4:B4fco3kqXcyC3Ast57tWaAxHCj4"
 
     _, file_path = tempfile.mkstemp(suffix=".zip", prefix="SimpleCBIR_")

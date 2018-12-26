@@ -35,13 +35,13 @@ def ExtractZip(path, des=""):
     file_zip.close()
 
 
-def GetDataSet():
+def GetDataSet(des=''):
     import tempfile
     cdn_url = "http://media.liontao.xin/CorelDB.zip?token=8D-fPY7fZfvNQ_YlcCHphmf-beQ7s5-ahx1C_WJ4:B4fco3kqXcyC3Ast57tWaAxHCj4"
 
     _, file_path = tempfile.mkstemp(suffix=".zip", prefix="SimpleCBIR_")
     DownloadFile(cdn_url, file_path)
-    ExtractZip(file_path)
+    ExtractZip(file_path,des)
     print("Dataset is ready.")
 
 
